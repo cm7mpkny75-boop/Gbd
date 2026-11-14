@@ -8460,8 +8460,8 @@ var K=["gear","mech","sign","rule"],KL={gear:"Drivecraft",mech:"Mechanical parts
 var K1="gear",K2=0;
 var seg=function(a,p,cur){return "<div class=\"seg\" style=\"margin:0 0 14px;width:max-content;max-width:100%\" role=\"group\">"+a.map(function(x,i){return "<button data-wh=\""+p+"|"+x[0]+"\" aria-pressed=\""+(x[1]===cur)+"\">"+x[2]+"</button>"}).join("")+"</div>"};
 window.roadTab=function(){var m={gear:"gear",mech:"mech",sign:"sign",rule:"rule"},d=W[K1],subs=d[1];if(K2>=subs.length)K2=0;
-var h="<div class=\"seg\" style=\"margin:0 0 12px;width:max-content;max-width:100%\" role=\"group\">"+K.map(function(k){return "<button data-wh=\"1|"+k+"\" aria-pressed=\""+(k===K1)+"\">"+KL[k]+"</button>"}).join("")+"</div>"+
-"<div class=\"seg\" style=\"margin:0 0 14px;width:max-content;max-width:100%\" role=\"group\">"+subs.map(function(s,i){return "<button data-wh=\"2|"+i+"\" aria-pressed=\""+(i===K2)+"\">"+s[1]+"</button>"}).join("")+"</div>";
+var h="<div class=\"dc-sticky\" style=\"position:sticky;top:0;z-index:20;margin:0 -10px 10px;padding:8px 10px 2px;background:rgba(14,32,27,.94);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)\"><div class=\"seg\" style=\"margin:0 0 12px;width:max-content;max-width:100%\" role=\"group\">"+K.map(function(k){return "<button data-wh=\"1|"+k+"\" aria-pressed=\""+(k===K1)+"\">"+KL[k]+"</button>"}).join("")+"</div>"+
+"<div class=\"seg\" style=\"margin:0 0 14px;width:max-content;max-width:100%\" role=\"group\">"+subs.map(function(s,i){return "<button data-wh=\"2|"+i+"\" aria-pressed=\""+(i===K2)+"\">"+s[1]+"</button>"}).join("")+"</div></div>";
 return h+subs[K2][2].map(function(x){return typeof x==="function"?x():x}).join("")};
 document.addEventListener("click",function(e){var t;
 if((t=e.target.closest("[data-wh]"))){var v=t.dataset.wh.split("|");if(v[0]==="1"){K1=v[1];K2=0}else K2=+v[1];render();return}
